@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const UserProfile = () => {
   const user = useSelector((state) => state.Authreducer.user);
-  console.log(user);
+
   return (
     <div>
       <Card style={{ width: "18rem", margin: "auto", marginTop: "50px" }}>
@@ -14,7 +14,7 @@ const UserProfile = () => {
         />
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
-          <Card.Text style={{ color: "black" }}>{user.email}</Card.Text>
+          <Card.Text style={{ color: "black" }}>{user?.email}</Card.Text>
         </Card.Body>
       </Card>
     </div>

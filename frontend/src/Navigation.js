@@ -31,7 +31,9 @@ const Navigation = () => {
       {token && user && (
         <Navbar bg="warning" variant="light">
           <Container>
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <Navbar.Brand as={Link} to="profile">
+              Navbar
+            </Navbar.Brand>
             <Nav className="me-auto" style={{ marginLeft: "65rem" }}>
               <Nav.Link
                 onClick={() => {
