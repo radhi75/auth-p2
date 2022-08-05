@@ -1,11 +1,18 @@
-import { GET_CURRENT, LOGIN, LOGOUT, REGISTER } from "../Types/authTypes";
+import {
+  GET_CURRENT,
+  GET_USERS,
+  LOGIN,
+  LOGOUT,
+  REGISTER,
+} from "../Types/authTypes";
 
 const initialState = {
+  users: [],
   user: {},
   errors: [],
 };
 
-export default (state = initialState, { type, payload }) => {
+const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case REGISTER:
       localStorage.setItem("token", payload.token);
@@ -15,6 +22,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, user: payload.users };
     case GET_CURRENT:
       return { ...state, user: payload.user };
+    case GET_USERS:
+      return { ...state, users: payload.userss };
     case LOGOUT:
       localStorage.removeItem("token");
 
@@ -23,3 +32,4 @@ export default (state = initialState, { type, payload }) => {
       return state;
   }
 };
+export default reducer;

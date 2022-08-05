@@ -1,5 +1,12 @@
 import axios from "axios";
-import { FAIL, GET_CURRENT, LOGIN, LOGOUT, REGISTER } from "../Types/authTypes";
+import {
+  FAIL,
+  GET_CURRENT,
+  GET_USERS,
+  LOGIN,
+  LOGOUT,
+  REGISTER,
+} from "../Types/authTypes";
 import { alert_error } from "./errorActions";
 
 export const register = (data, navigate) => async (dispatch) => {
@@ -37,6 +44,15 @@ export const get_current = () => async (dispatch) => {
   try {
     const res = await axios.get("/users/current", config);
     dispatch({ type: GET_CURRENT, payload: res.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getusers = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/users/all");
+    console.log(res.data);
+    dispatch({ type: GET_USERS, payload: res.data });
   } catch (error) {
     console.log(error);
   }

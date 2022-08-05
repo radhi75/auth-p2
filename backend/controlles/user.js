@@ -43,3 +43,11 @@ exports.Login = async (req, res) => {
     res.status(500).send({ msg: "couldn't logging" });
   }
 };
+exports.Getusers = async (req, res) => {
+  try {
+    const userss = await users.find();
+    res.status(200).send({ msg: "list of users", userss });
+  } catch (error) {
+    res.status(500).send("couldn't get users");
+  }
+};
